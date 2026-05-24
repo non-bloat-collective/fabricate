@@ -1,0 +1,16 @@
+*
+!/docs/
+!/docs/**
+!/examples/
+!/examples/**
+!/src/
+!/src/**
+!/tests/
+!/tests/**
+!/*.md
+!/*.sh
+!/LICENSE
+!/Makefile
+.**
+!/.gitattributes
+!/.gitignore
