@@ -36,14 +36,16 @@ typedef struct {
 FileType ProbeFileType(const char* name); // Windows already has GetFileType
 bool ProbeFileInfo(const char* name, FileInfo*);
 
-bool BeginLs(const char*, LsState*);
+bool BeginLs(const char* path, LsState*);
 const FileInfo* ReadLs(LsState*);
 void EndLs(LsState*);
 
-FileInfo* Ls(const char*, size_t* count);
+FileInfo* Ls(const char* path, const char* wildcard, bool excldDirs, size_t* count);
 void FreeLs(FileInfo*);
 
-bool Rm(const char*);
-bool RmDir(const char*);
+bool MkDir(const char* path);
+
+bool Rm(const char* path);
+bool RmDir(const char* path);
 
 #endif

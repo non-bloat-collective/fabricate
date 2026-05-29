@@ -1,6 +1,6 @@
 #include "filesystem.h"
 
-FileInfo* Ls(const char* path, size_t* count) {
+FileInfo* Ls(const char* path, const char* wildcard, bool excldDirs, size_t* count) {
 	// TODO
 	return NULL;
 }

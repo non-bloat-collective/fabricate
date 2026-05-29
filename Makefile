@@ -82,7 +82,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(call deps,$(SRCDIR)/%.c) | $(OBJDIR)
 $(BIN): $(OBJECTS) | $(OUTDIR)
 	@echo Linking $@...
 	@$(_LD) $(_LDFLAGS) $^ $(_LDLIBS) -o $@
-	-@cd -- $(OUTDIR) && [ -e fab ] || ln -s -- fabricate fab
+	-@cd -- $(OUTDIR); [ -e fab ] || ln -s -- fabricate fab
 	@echo Linked $@
 
 clean:

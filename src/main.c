@@ -27,23 +27,13 @@ static int UseFirstFabFile_Cmp(const void* a, const void* b) {
 }
 static int UseFirstFabFile(void) {
 	size_t count;
-	FileInfo* ls = Ls(".", &count);
+	FileInfo* ls = Ls(".", "*.fab", true, &count);
 	if (!ls) {ERR_INT(); return 2;}
-
+	if (!count) {ERR_NOFAB(); return 1;}
 	qsort(ls, count, sizeof(*ls), UseFirstFabFile_Cmp);
-
-	for (size_t i = 0; i < count; ++i) {
-		if (ls[i].type != FILETYPE_DIR && MatchWildcard("*.fab", ls[i].name)) {
-			filename = DupStr(ls[i].name);
-			if (!filename) {ERR_INT(); return 2;}
-			FreeLs(ls);
-			return 0;
-		}
-	}
-
+	filename = DupStr(ls[0].name);
 	FreeLs(ls);
-	ERR_NOFAB();
-	return 1;
+	return 0;
 }
 
 int main(int argc, char** argv) {
